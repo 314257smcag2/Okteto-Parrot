@@ -3,7 +3,7 @@ MAINTAINER SHAKUGAN <shakugan@disbox.net>
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN apt update && apt-get upgrade -y
-RUN apt-get install tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor
+RUN apt-get install -y tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor
 RUN locale-gen en_US.UTF-8
 
 
