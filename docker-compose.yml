@@ -1,0 +1,6 @@
+services:
+  prrot:
+    build: .
+    shm_size: 128gb
+    ports:
+      - "80:80"
