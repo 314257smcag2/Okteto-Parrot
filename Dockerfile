@@ -21,7 +21,7 @@ RUN apt clean
 # VSCODETOr
 RUN wget https://github.com/coder/code-server/releases/download/v4.10.0/code-server_4.10.0_amd64.deb
 RUN dpkg -i code-server_4.10.0_amd64.deb
-RUN wget -O - https://deb.nodesource.com/setup_18.x | bash && apt-get -y install nodejs && npm i -g updates
+RUN wget -O - https://deb.nodesource.com/setup_18.x | bash && apt-get -y install nodejs
 RUN sed -i 's\#SocksPort 9050\SocksPort 9050\ ' /etc/tor/torrc
 RUN sed -i 's\#ControlPort 9051\ControlPort 9051\ ' /etc/tor/torrc
 RUN sed -i 's\#HashedControlPassword\HashedControlPassword\ ' /etc/tor/torrc
