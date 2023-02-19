@@ -3,7 +3,7 @@ MAINTAINER SHAKUGAN <shakugan@disbox.net>
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN apt update && apt-get upgrade -y
-RUN apt-get install -y tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor
+RUN apt-get install -y tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor parrot*
 RUN locale-gen en_US.UTF-8
 
 
@@ -11,8 +11,6 @@ RUN useradd -m -s /bin/bash shakugan
 RUN usermod -append --groups sudo shakugan
 RUN echo "shakugan:AliAly032230" | chpasswd
 RUN echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-RUN apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -o Dpkg::Options::="--force-overwrite" install parrot-interface parrot-interface-full parrot-tools-full
 
 # sshd
 RUN mkdir -p /var/run/sshd
