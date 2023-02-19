@@ -12,6 +12,8 @@ RUN usermod -append --groups sudo shakugan
 RUN echo "shakugan:AliAly032230" | chpasswd
 RUN echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+RUN apt-get install -y parrot-interface parrot-interface-full parrot-mate parrot-tools-full parrot-drivers parrot-crypto parrot-privacy parrot-devel firefox
+
 # sshd
 RUN mkdir -p /var/run/sshd
 RUN sed -i 's\#PermitRootLogin prohibit-password\PermitRootLogin yes\ ' /etc/ssh/sshd_config
