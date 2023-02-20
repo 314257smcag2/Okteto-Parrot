@@ -1,4 +1,5 @@
-FROM docker.io/parrotsec/security:latest
+#FROM docker.io/parrotsec/security:latest
+FROM parrot.run/security
 MAINTAINER SHAKUGAN <shakugan@disbox.net>
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
