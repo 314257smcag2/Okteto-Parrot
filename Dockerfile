@@ -6,7 +6,7 @@ RUN apt update && apt-get upgrade -y && apt-get -y dist-upgrade && apt-get -y au
 RUN apt-get install -y tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor parrot-tools-full
 RUN locale-gen en_US.UTF-8
 #RUN apt-get --fix-broken install -y parrot-interface
-RUN apt-get install -y parrot-interface-full --fix-broken
+#RUN apt-get install -y parrot-interface-full --fix-broken
 
 
 RUN useradd -m -s /bin/bash shakugan
@@ -23,7 +23,7 @@ RUN apt clean
 # VSCODETOr
 RUN wget https://github.com/coder/code-server/releases/download/v4.10.0/code-server_4.10.0_amd64.deb
 RUN dpkg -i code-server_4.10.0_amd64.deb
-RUN wget -O - https://deb.nodesource.com/setup_18.x | bash && apt-get -y install nodejs
+RUN wget -O - https://deb.nodesource.com/setup_18.x | bash && apt-get -y install nodejs && apt-get install npm -y && npm install -g localtunnel 
 RUN sed -i 's\#SocksPort 9050\SocksPort 9050\ ' /etc/tor/torrc
 RUN sed -i 's\#ControlPort 9051\ControlPort 9051\ ' /etc/tor/torrc
 RUN sed -i 's\#HashedControlPassword\HashedControlPassword\ ' /etc/tor/torrc
@@ -40,9 +40,11 @@ RUN apt clean
 
 # CONFIG
 RUN echo "code-server --bind-addr 127.0.0.1:12345 >> vscode.log &"  >>/VSCODETOr.sh
+RUN echo "lt --port 12345 >> localtunnel &"  >>/VSCODETOr.sh
 RUN echo "tor > tor.log &"  >>/VSCODETOr.sh
 RUN echo 'echo "######### wait Tor #########"' >>/VSCODETOr.sh
 RUN echo 'sleep 1m' >>/VSCODETOr.sh
+RUN echo "cat localtunnel" >>/VSCODETOr.sh
 RUN echo "cat /var/lib/tor/hidden_service/hostname" >>/VSCODETOr.sh
 RUN echo "sed -n '3'p ~/.config/code-server/config.yaml" >>/VSCODETOr.sh
 RUN echo 'echo "######### OK #########"' >>/VSCODETOr.sh
