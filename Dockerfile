@@ -1,8 +1,7 @@
-#FROM docker.io/parrotsec/security:latest
+ENV privilege
+
 FROM parrot.run/security
 MAINTAINER SHAKUGAN <shakugan@disbox.net>
-ENV privilege
-ARG privilege
 
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN apt update && apt-get upgrade -y && apt-get -y dist-upgrade && apt-get -y autoremove
