@@ -1,5 +1,3 @@
-ENV privilege
-
 FROM parrot.run/security
 MAINTAINER SHAKUGAN <shakugan@disbox.net>
 
