@@ -5,8 +5,8 @@ RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN apt update && apt-get upgrade -y && apt-get -y dist-upgrade && apt-get -y autoremove
 RUN apt-get install -y tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor parrot-tools-full
 RUN locale-gen en_US.UTF-8
-RUN apt-get install -y parrot-interface & apt --fix-broken install -y
-RUN apt-get install -y parrot-interface-full & apt --fix-broken install -y
+RUN apt-get --fix-broken install -y parrot-interface
+RUN apt-get --fix-broken install -y parrot-interface-full
 
 
 RUN useradd -m -s /bin/bash shakugan
