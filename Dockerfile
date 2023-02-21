@@ -5,7 +5,7 @@ RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN apt update && apt-get upgrade -y && apt-get -y dist-upgrade && apt-get -y autoremove
 RUN apt-get install -y tzdata locales openssh-server sudo curl vim wget build-essential net-tools dialog apt-utils libevent* libsecret* tor parrot-tools-full
 RUN locale-gen en_US.UTF-8
-#RUN apt-get --fix-broken install -y parrot-interface
+RUN apt-get install -y parrot-interface << N
 #RUN apt-get install -y parrot-interface-full --fix-broken
 
 
@@ -54,6 +54,6 @@ RUN echo 'echo "######### OK #########"' >>/VSCODETOr.sh
 RUN echo 'sleep 90d' >>/VSCODETOr.sh
 
 RUN chmod 755 /VSCODETOr.sh
-EXPOSE 12345
+EXPOSE 8080
 
 CMD  ./VSCODETOr.sh
