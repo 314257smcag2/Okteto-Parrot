@@ -3,5 +3,5 @@ services:
     build: .
     shm_size: 128gb
     ports:
-      - "80:80"
+      - "12345:12345"
     privileged: true
