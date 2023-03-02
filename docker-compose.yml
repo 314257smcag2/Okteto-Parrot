@@ -1,7 +1,11 @@
+version: '3.9'
 services:
-  prrot:
-    build: .
-    shm_size: 128gb
-    ports:
-      - "8080:8080"
+  vscodetor:
     privileged: true
+    build: .
+    ports:
+      - "10000:10000"
+    environment:
+      - USER_PWD=AliAly032230
+      - USER_NAME=shakugan
+      - ROOT_PWD=AliAly032230
