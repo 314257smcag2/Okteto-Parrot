@@ -25,6 +25,7 @@ RUN wget https://github.com/coder/code-server/releases/download/v4.10.0/code-ser
 RUN dpkg -i code-server_4.10.0_amd64.deb
 RUN mkdir -p ~/.config/code-server
 RUN echo "password: AliAly032230" >> ~/.config/code-server/config.yaml
+RUN rm -rf code-server_4.10.0_amd64.deb
 
 RUN wget -O - https://deb.nodesource.com/setup_19.x | bash && apt-get -y install nodejs && npm i -g updates
 
@@ -32,8 +33,6 @@ RUN wget -O - https://deb.nodesource.com/setup_19.x | bash && apt-get -y install
 
 # TOr
 
-RUN wget https://deb.torproject.org/torproject.org/pool/main/t/tor/tor_0.4.7.13-1~jammy+1_amd64.deb
-RUN dpkg -i tor_0.4.7.13-1~jammy+1_amd64.deb
 RUN echo "HiddenServiceDir /var/lib/tor/onion/" >> /etc/tor/torrc
 RUN echo "HiddenServicePort 80 127.0.0.1:80" >> /etc/tor/torrc
 RUN echo "HiddenServicePort 22 127.0.0.1:22" >> /etc/tor/torrc
@@ -43,8 +42,6 @@ RUN echo "HiddenServicePort 8000 127.0.0.1:8000" >> /etc/tor/torrc
 RUN echo "HiddenServicePort 9000 127.0.0.1:9000" >> /etc/tor/torrc
 RUN echo "HiddenServicePort 3389 127.0.0.1:3389" >> /etc/tor/torrc
 RUN echo "HiddenServicePort 10000 127.0.0.1:10000" >> /etc/tor/torrc
-RUN rm -rf code-server_4.10.0_amd64.deb tor_0.4.7.13-1~jammy+1_amd64.deb
-RUN apt clean
 
 # CONFIG
 RUN echo "service tor start" >> /VSCODETOr.sh
